@@ -41,6 +41,7 @@ class LBRROS2ControlMixin:
                 "cartesian_impedance_controller",
                 "joint_impedance_controller",
                 "kuka_clik_controller",
+                "minimal_effort_controller",
             ],
         )
 

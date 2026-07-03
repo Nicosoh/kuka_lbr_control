@@ -57,6 +57,7 @@ def launch_setup(context, *args, **kwargs):
         ctrl == "cartesian_impedance_controller"
         or ctrl == "joint_impedance_controller"
         or ctrl == "gravity_compensation"
+        or ctrl == "minimal_effort_controller"
     ):
         sys_cfg = "config/lbr_system_config_torque.yaml"
 
@@ -130,6 +131,7 @@ def generate_launch_description() -> LaunchDescription:
                 "cartesian_impedance_controller",
                 "joint_impedance_controller",
                 "kuka_clik_controller",
+                "minimal_effort_controller",
             ],
         )
     )
