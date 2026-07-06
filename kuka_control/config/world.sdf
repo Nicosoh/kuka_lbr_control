@@ -69,5 +69,53 @@
         </visual>
       </link>
     </model>
+
+    <model name="capsule_obstacle">
+      <static>true</static>
+      <pose>0.625 0.0 0.35 0 1.5707963 0</pose>
+      <link name="link">
+        <!-- <collision name="collision">
+          <geometry>
+            <capsule>
+              <radius>0.05</radius>
+              <length>0.45</length>
+            </capsule>
+          </geometry>
+        </collision> -->
+        <visual name="visual">
+          <geometry>
+            <capsule>
+              <radius>0.05</radius>
+              <length>0.45</length>
+            </capsule>
+          </geometry>
+          <material>
+            <ambient>1 0 0 0.6</ambient>
+            <diffuse>1 0 0 0.6</diffuse>
+            <specular>0.2 0.2 0.2 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="threshold_plane">
+      <static>true</static>
+      <pose>0 0 0.15 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>2 2</size>
+            </plane>
+          </geometry>
+          <material>
+            <ambient>0.2 0.6 1 0.25</ambient>
+            <diffuse>0.2 0.6 1 0.25</diffuse>
+            <specular>0.1 0.1 0.1 0.25</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
   </world>
 </sdf>

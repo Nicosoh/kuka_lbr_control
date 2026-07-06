@@ -252,6 +252,7 @@
       - lbr_A5
       - lbr_A6
       - lbr_A7
+    delta_tau_max: 0.1 # Nm
     stiffness:
       joint1: 150.0
       joint2: 150.0
@@ -263,3 +264,4 @@
     nullspace_stiffness: 0.0 # 10.0
     compensate_gravity: false
     compensate_coriolis: false
+    use_feedforward_torque: false # if true, the controller will add the feedforward torque from the target_joint message to the computed torque

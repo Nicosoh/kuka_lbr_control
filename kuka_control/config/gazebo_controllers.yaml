@@ -264,3 +264,4 @@
     nullspace_stiffness: 0.0 # 10.0
     compensate_gravity: false
     compensate_coriolis: false
+    use_feedforward_torque: true # if true, the controller will add the feedforward torque from the target_joint message to the computed torque
