@@ -8,7 +8,7 @@ from launch.substitutions import PathJoinSubstitution
 from lbr_bringup.description import LBRDescriptionMixin
 from lbr_bringup.ros2_control import LBRROS2ControlMixin
 from lbr_bringup.gazebo import GazeboMixin
-
+from launch_ros.actions import Node
 
 def launch_setup(context, *args, **kwargs):
     ctrl = LaunchConfiguration("ctrl").perform(context)
@@ -29,6 +29,21 @@ def launch_setup(context, *args, **kwargs):
         "sys_cfg",
         default_value=sys_cfg_default,
         description="Path to the system config YAML file",
+    )
+    
+    rviz = Node(
+        package="rviz2",
+        executable="rviz2",
+        arguments=[
+            "-d",
+            PathJoinSubstitution([
+                FindPackageShare("kuka_control"),
+                "rviz",
+                "kuka.rviz",
+            ]),
+        ],
+        parameters=[{"use_sim_time": True}],
+        output="screen",
     )
 
     robot_description = {
@@ -73,6 +88,7 @@ def launch_setup(context, *args, **kwargs):
     return [
         sys_cfg_arg,
         robot_state_publisher,
+        rviz,
     ]
 
 

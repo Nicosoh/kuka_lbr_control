@@ -75,6 +75,21 @@ def launch_setup(context, *args, **kwargs):
     robot_state_publisher = LBRROS2ControlMixin.node_robot_state_publisher(
         robot_description=robot_description, use_sim_time=False
     )
+    
+    rviz = Node(
+        package="rviz2",
+        executable="rviz2",
+        arguments=[
+            "-d",
+            PathJoinSubstitution([
+                FindPackageShare("kuka_control"),
+                "rviz",
+                "kuka.rviz",
+            ]),
+        ],
+        parameters=[{"use_sim_time": False}],
+        output="screen",
+    )
 
     joint_state_broadcaster = LBRROS2ControlMixin.node_controller_spawner(
         controller="joint_state_broadcaster"
@@ -105,6 +120,7 @@ def launch_setup(context, *args, **kwargs):
         robot_state_publisher,
         ros2_control_node,
         controller_event_handler,
+        rviz
     ]
 
 
